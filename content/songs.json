@@ -25,28 +25,28 @@
     "SongTitle": "Rockin Around The Christmas Tree",
     "Artist": "Brenda Lee",
     "Length": 3,
-    "ClipURL": "./content/NameThatTune/RockinChristmasTree-3.wav"
+    "ClipURL": "./content/NameThatTune/RockinChristmasTree-3.mp3"
   },
   {
     "ID": 5,
     "SongTitle": "White Christmas",
     "Artist": "Bing Crosby",
     "Length": 3,
-    "ClipURL": "./content/NameThatTune/WhiteChristmas-3.wav"
+    "ClipURL": "./content/NameThatTune/WhiteChristmas-3.mp3"
   },
   {
     "ID": 6,
     "SongTitle": "It's Beginning To Look A Lot Like Christmas",
     "Artist": "Michael Buble",
     "Length": 1,
-    "ClipURL": "./content/NameThatTune/BeginningChristmas-1wav"
+    "ClipURL": "./content/NameThatTune/BeginningChristmas-1.wav"
   },
   {
     "ID": 7,
     "SongTitle": "Have Yourself a Merry Little Christmas",
     "Artist": "Frank Sinatra",
     "Length": 1,
-    "ClipURL": "./content/NameThatTune/haveChristmas-1.wav"
+    "ClipURL": "./content/NameThatTune/HaveChristmas-1.wav"
   },
   {
     "ID": 8,
@@ -70,6 +70,7 @@
     "ClipURL": "./content/NameThatTune/WonderfulChristmastime-1.wav"
   }
 ]
+
 
 
 
