@@ -10,7 +10,8 @@
     "ID": 2,
     "SongTitle": "Jingle Bell Rock",
     "Artist": "Bobby Helms",
-    "Length": 3
+    "Length": 3,
+    "ClipURL": "./content/NameThatTune/JingleBellRock-3.wav"
   },
   {
     "ID": 3,
@@ -69,4 +70,5 @@
     "ClipURL": "./content/NameThatTune/WonderfulChristmastime-1.wav"
   }
 ]
+
 
