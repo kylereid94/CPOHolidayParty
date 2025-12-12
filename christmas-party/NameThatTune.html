@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Christmas Song Clips 🎄</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      :root {
+        --green: #1b4332;
+        --green-light: #2d6a4f;
+        --red: #d00000;
+        --cream: #fdf7ec;
+        --gold: #e9c46a;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      .top-nav {
+        width: 100%;
+        background: var(--cream);
+        border-bottom: 3px solid var(--green);
+        padding: 0.5rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        margin-bottom: 100px;
+        border-radius: 10px;
+      }
+
+      .nav-inner {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 1rem;
+        display: flex;
+        justify-content: center;
+        gap: 1.75rem;
+      }
+
+      .nav-link {
+        font-size: 0.95rem;
+        font-weight: 600;
+        text-decoration: none;
+        padding: 0.35rem 0.6rem;
+        border-radius: 6px;
+        color: var(--green);
+        transition: background 0.15s ease, color 0.15s ease;
+      }
+
+      .nav-link:hover {
+        background: rgba(0, 0, 0, 0.05);
+        color: var(--green-light);
+      }
+
+      /* Active page highlights */
+      .nav-link.active {
+        background: linear-gradient(135deg, var(--green-light), var(--green));
+        color: #fff !important;
+        box-shadow: 0 3px 7px rgba(0, 0, 0, 0.18);
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: start;
+        padding: 1.5rem;
+        background: radial-gradient(
+            circle at 10% 20%,
+            rgba(255, 255, 255, 0.2) 0,
+            transparent 40%
+          ),
+          radial-gradient(
+            circle at 80% 10%,
+            rgba(255, 255, 255, 0.16) 0,
+            transparent 45%
+          ),
+          radial-gradient(
+            circle at 20% 80%,
+            rgba(255, 255, 255, 0.14) 0,
+            transparent 45%
+          ),
+          #0b1b2a;
+        color: #fdfdfd;
+      }
+
+      .card {
+        width: 100%;
+        max-width: 520px;
+        background: var(--cream);
+        color: #222;
+        border-radius: 16px;
+        padding: 1.5rem 1.25rem 1.25rem;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+        border: 3px solid var(--green);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -10%;
+        width: 120%;
+        height: 18px;
+        background-image: radial-gradient(circle, #ffccd5 3px, transparent 4px),
+          radial-gradient(circle, #ffe169 3px, transparent 4px),
+          radial-gradient(circle, #b7e4c7 3px, transparent 4px),
+          radial-gradient(circle, #f28f3b 3px, transparent 4px);
+        background-size: 26px 18px;
+        background-position: 0 4px, 8px 4px, 16px 4px, 24px 4px;
+        background-repeat: repeat-x;
+        pointer-events: none;
+      }
+
+      h1 {
+        margin: 0 0 0.5rem;
+        font-size: 1.4rem;
+        text-align: center;
+        color: var(--green);
+      }
+
+      .subtitle {
+        margin: 0 0 1.25rem;
+        font-size: 0.9rem;
+        text-align: center;
+        color: #555;
+      }
+
+      #status {
+        margin-bottom: 0.75rem;
+        font-size: 0.85rem;
+        color: #444;
+        min-height: 1.2em;
+      }
+
+      #status.ok {
+        color: var(--green);
+      }
+      #status.error {
+        color: var(--red);
+      }
+
+      ul#songList {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        max-height: 390px;
+        overflow-y: auto;
+      }
+
+      .song-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+        padding: 0.6rem 0.25rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      }
+
+      .song-row:last-child {
+        border-bottom: none;
+      }
+
+      .song-main {
+        flex: 1 1 auto;
+        min-width: 0;
+      }
+
+      .song-title {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #222;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .song-meta {
+        font-size: 0.8rem;
+        color: #666;
+        margin-top: 0.1rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .song-meta span.length {
+        color: #444;
+        font-weight: 500;
+      }
+
+      .play-btn {
+        flex-shrink: 0;
+        padding: 0.35rem 0.7rem;
+        font-size: 0.8rem;
+        border-radius: 999px;
+        border: none;
+        cursor: pointer;
+        background: linear-gradient(135deg, var(--green-light), var(--green));
+        color: #fff;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.25rem;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        transition: transform 0.08s ease, box-shadow 0.08s ease,
+          filter 0.08s ease;
+      }
+
+      .play-btn:hover {
+        filter: brightness(1.05);
+        transform: translateY(-1px);
+        box-shadow: 0 3px 9px rgba(0, 0, 0, 0.25);
+      }
+
+      .play-btn:active {
+        transform: translateY(0);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+      }
+
+      .play-btn.playing {
+        background: linear-gradient(135deg, var(--red), #f94144);
+      }
+
+      .footer-note {
+        margin-top: 0.75rem;
+        font-size: 0.75rem;
+        text-align: center;
+        color: #777;
+      }
+
+      .footer-note a {
+        color: var(--green-light);
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .footer-note a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="top-nav">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-link" id="nav-home">Home</a>
+        <a href="BingoCaller.html" class="nav-link" id="nav-bingo"
+          >Holiday Bingo</a
+        >
+        <a href="NameThatTune.html" class="nav-link active" id="nav-tunes"
+          >Name That Tune</a
+        >
+      </div>
+    </nav>
+
+    <div class="card">
+      <h1>Christmas Song Clips 🎧</h1>
+      <p class="subtitle">Tap a track to hear a festive preview.</p>
+
+      <p id="status"></p>
+
+      <ul id="songList"></ul>
+
+      <p class="footer-note">
+        Need to trim a new clip?
+        <a href="SongClipGen.html">Open the Christmas Audio Clipper</a>
+      </p>
+    </div>
+
+    <script>
+      const songListEl = document.getElementById("songList");
+      const statusEl = document.getElementById("status");
+
+      let currentAudio = null;
+      let currentButton = null;
+
+      async function loadSongs() {
+        setStatus("Loading your holiday playlist... 🎵", "ok");
+        try {
+          const res = await fetch("/content/songs.json");
+          if (!res.ok) {
+            throw new Error("HTTP " + res.status);
+          }
+          const songs = await res.json();
+          if (!Array.isArray(songs) || songs.length === 0) {
+            setStatus("No songs found in songs.json. 🎅", "error");
+            return;
+          }
+          renderSongs(songs);
+          setStatus("Pick a song to play a clip. ❄️", "ok");
+        } catch (err) {
+          console.error(err);
+          setStatus(
+            "Couldn't load /content/songs.json. Check the path & JSON. 🎄",
+            "error"
+          );
+        }
+      }
+
+      function renderSongs(songs) {
+        songListEl.innerHTML = "";
+
+        songs.forEach((song, index) => {
+          const li = document.createElement("li");
+          li.className = "song-row";
+
+          const main = document.createElement("div");
+          main.className = "song-main";
+
+          const titleEl = document.createElement("div");
+          titleEl.className = "song-title";
+          titleEl.textContent = song.SongTitle || "Untitled Song";
+
+          const metaEl = document.createElement("div");
+          metaEl.className = "song-meta";
+          const artist = song.Artist || "Unknown Artist";
+          const lengthSec = Number(song.Length) || 0;
+          const formattedLength = formatSeconds(lengthSec);
+          metaEl.innerHTML = `${artist} • <span class="length">${formattedLength}</span>`;
+
+          main.appendChild(titleEl);
+          main.appendChild(metaEl);
+
+          const button = document.createElement("button");
+          button.className = "play-btn";
+          button.type = "button";
+          button.textContent = "▶ Play";
+          button.setAttribute(
+            "aria-label",
+            "Play clip for " + (song.SongTitle || "this song")
+          );
+
+          const audio = document.createElement("audio");
+          audio.src = song.ClipURL || "";
+          audio.preload = "none";
+
+          button.addEventListener("click", () => {
+            handlePlayClick(button, audio);
+          });
+
+          audio.addEventListener("ended", () => {
+            if (currentAudio === audio) {
+              stopCurrent();
+            }
+          });
+
+          li.appendChild(main);
+          li.appendChild(button);
+          li.appendChild(audio);
+
+          songListEl.appendChild(li);
+        });
+      }
+
+      function handlePlayClick(button, audio) {
+        // If clicking the same one: toggle play/pause
+        if (currentAudio === audio) {
+          if (audio.paused) {
+            audio.play();
+            button.classList.add("playing");
+            button.textContent = "⏸ Pause";
+          } else {
+            audio.pause();
+            button.classList.remove("playing");
+            button.textContent = "▶ Play";
+          }
+          return;
+        }
+
+        // Stop previous
+        stopCurrent();
+
+        // Start new
+        currentAudio = audio;
+        currentButton = button;
+        audio.currentTime = 0;
+        audio.play();
+        button.classList.add("playing");
+        button.textContent = "⏸ Pause";
+      }
+
+      function stopCurrent() {
+        if (currentAudio) {
+          currentAudio.pause();
+          currentAudio.currentTime = 0;
+        }
+        if (currentButton) {
+          currentButton.classList.remove("playing");
+          currentButton.textContent = "▶ Play";
+        }
+        currentAudio = null;
+        currentButton = null;
+      }
+
+      function formatSeconds(total) {
+        const seconds = Math.max(0, Math.floor(total));
+        const m = Math.floor(seconds / 60);
+        const s = seconds % 60;
+        return m + ":" + (s < 10 ? "0" + s : s);
+      }
+
+      function setStatus(message, type) {
+        statusEl.textContent = message;
+        statusEl.className = type || "";
+      }
+
+      // Kick things off
+      loadSongs();
+    </script>
+  </body>
+</html>
