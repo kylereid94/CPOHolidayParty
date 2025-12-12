@@ -286,7 +286,7 @@
       async function loadSongs() {
         setStatus("Loading your holiday playlist... 🎵", "ok");
         try {
-          const res = await fetch("/content/songs.json");
+          const res = await fetch("./content/songs.json");
           if (!res.ok) {
             throw new Error("HTTP " + res.status);
           }
@@ -418,3 +418,4 @@
     </script>
   </body>
 </html>
+
