@@ -4,7 +4,7 @@
     "SongTitle": "All I Want For Christmas",
     "Artist": "Mariah Carey",
     "Length": 3,
-    "ClipURL": "/content/NameThatTune/AllIWant-3.wav"
+    "ClipURL": "./content/NameThatTune/AllIWant-3.wav"
   },
   {
     "ID": 2,
@@ -17,55 +17,56 @@
     "SongTitle": "Last Christmas",
     "Artist": "Wham!",
     "Length": 3,
-    "ClipURL": "/content/NameThatTune/LastChristmas-3.wav"
+    "ClipURL": "./content/NameThatTune/LastChristmas-3.wav"
   },
   {
     "ID": 4,
     "SongTitle": "Rockin Around The Christmas Tree",
     "Artist": "Brenda Lee",
     "Length": 3,
-    "ClipURL": "/content/NameThatTune/RockinChristmasTree.wav"
+    "ClipURL": "./content/NameThatTune/RockinChristmasTree.wav"
   },
   {
     "ID": 5,
     "SongTitle": "White Christmas",
     "Artist": "Bing Crosby",
     "Length": 3,
-    "ClipURL": "/content/NameThatTune/WhiteChristmas-3.wav"
+    "ClipURL": "./content/NameThatTune/WhiteChristmas-3.wav"
   },
   {
     "ID": 6,
     "SongTitle": "It's Beginning To Look A Lot Like Christmas",
     "Artist": "Michael Buble",
     "Length": 1,
-    "ClipURL": "/content/NameThatTune/BeginningChristmas-1wav"
+    "ClipURL": "./content/NameThatTune/BeginningChristmas-1wav"
   },
   {
     "ID": 7,
     "SongTitle": "Have Yourself a Merry Little Christmas",
     "Artist": "Frank Sinatra",
     "Length": 1,
-    "ClipURL": "/content/NameThatTune/haveChristmas-1.wav"
+    "ClipURL": "./content/NameThatTune/haveChristmas-1.wav"
   },
   {
     "ID": 8,
     "SongTitle": "I Saw Mommy Kissing Santa Clause",
     "Artist": "Jackson 5",
     "Length": 1,
-    "ClipURL": "/content/NameThatTune/MommyKissing-1.wav"
+    "ClipURL": "./content/NameThatTune/MommyKissing-1.wav"
   },
   {
     "ID": 9,
     "SongTitle": "Sleigh Ride",
     "Artist": "The Ronettes",
     "Length": 1,
-    "ClipURL": "/content/NameThatTune/SleighRide-1.wav"
+    "ClipURL": "./content/NameThatTune/SleighRide-1.wav"
   },
   {
     "ID": 10,
     "SongTitle": "Wonderful Christmastime",
     "Artist": "Paul Mccartney",
     "Length": 1,
-    "ClipURL": "/content/NameThatTune/WonderfulChristmastime-1.wav"
+    "ClipURL": "./content/NameThatTune/WonderfulChristmastime-1.wav"
   }
 ]
+
