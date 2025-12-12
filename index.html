@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CPO Holiday Party Games</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      :root {
+        --green: #1b4332;
+        --green-light: #2d6a4f;
+        --red: #d00000;
+        --cream: #fdf7ec;
+        --gold: #e9c46a;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: start;
+        padding: 1.5rem;
+        background: radial-gradient(
+            circle at 10% 20%,
+            rgba(255, 255, 255, 0.2) 0,
+            transparent 40%
+          ),
+          radial-gradient(
+            circle at 80% 10%,
+            rgba(255, 255, 255, 0.16) 0,
+            transparent 45%
+          ),
+          radial-gradient(
+            circle at 20% 80%,
+            rgba(255, 255, 255, 0.14) 0,
+            transparent 45%
+          ),
+          #0b1b2a;
+        color: #fdfdfd;
+      }
+
+      main {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+      }
+
+      /* --------------------------
+       Christmas Top Navigation
+       -------------------------- */
+
+      .top-nav {
+        width: 100%;
+        background: var(--cream);
+        border-bottom: 3px solid var(--green);
+        padding: 0.5rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        margin-bottom: 100px;
+        border-radius: 10px;
+      }
+
+      .nav-inner {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 1rem;
+        display: flex;
+        justify-content: center;
+        gap: 1.75rem;
+      }
+
+      .nav-link {
+        font-size: 0.95rem;
+        font-weight: 600;
+        text-decoration: none;
+        padding: 0.35rem 0.6rem;
+        border-radius: 6px;
+        color: var(--green);
+        transition: background 0.15s ease, color 0.15s ease;
+      }
+
+      .nav-link:hover {
+        background: rgba(0, 0, 0, 0.05);
+        color: var(--green-light);
+      }
+
+      /* Active page highlights */
+      .nav-link.active {
+        background: linear-gradient(135deg, var(--green-light), var(--green));
+        color: #fff !important;
+        box-shadow: 0 3px 7px rgba(0, 0, 0, 0.18);
+      }
+
+      /* --------------------------
+       Landing Card Layout
+       -------------------------- */
+
+      .landing-card {
+        width: 100%;
+        max-width: 760px;
+        background: var(--cream);
+        color: #222;
+        border-radius: 18px;
+        padding: 1.75rem 1.5rem 1.5rem;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+        border: 3px solid var(--green);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .landing-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -10%;
+        width: 120%;
+        height: 18px;
+        background-image: radial-gradient(circle, #ffccd5 3px, transparent 4px),
+          radial-gradient(circle, #ffe169 3px, transparent 4px),
+          radial-gradient(circle, #b7e4c7 3px, transparent 4px),
+          radial-gradient(circle, #f28f3b 3px, transparent 4px);
+        background-size: 26px 18px;
+        background-position: 0 4px, 8px 4px, 16px 4px, 24px 4px;
+        background-repeat: repeat-x;
+        pointer-events: none;
+      }
+
+      .landing-header {
+        text-align: center;
+        margin-bottom: 1.4rem;
+      }
+
+      .landing-title {
+        margin: 0;
+        font-size: 1.6rem;
+        color: var(--green);
+      }
+
+      .landing-subtitle {
+        margin: 0.35rem 0 0;
+        font-size: 0.95rem;
+        color: #555;
+      }
+
+      .games-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+
+      @media (max-width: 640px) {
+        .games-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .game-card {
+        background: #ffffff;
+        border-radius: 14px;
+        padding: 1rem;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        position: relative;
+        overflow: hidden;
+        justify-content: space-between;
+      }
+
+      .game-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle at top right,
+          rgba(233, 196, 106, 0.16),
+          transparent 55%
+        );
+        pointer-events: none;
+      }
+
+      .game-tag {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        font-weight: 700;
+        color: #777;
+      }
+
+      .game-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        color: #222;
+      }
+
+      .game-emoji {
+        font-size: 1.2rem;
+      }
+
+      .game-desc {
+        font-size: 0.9rem;
+        color: #555;
+      }
+
+      .game-meta {
+        font-size: 0.8rem;
+        color: #777;
+      }
+
+      .game-actions {
+        margin-top: 0.5rem;
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        border-radius: 999px;
+        border: none;
+        padding: 0.45rem 0.9rem;
+        font-size: 0.85rem;
+        font-weight: 600;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        text-decoration: none;
+        box-shadow: 0 3px 9px rgba(0, 0, 0, 0.18);
+        transition: transform 0.1s ease, box-shadow 0.1s ease, filter 0.1s ease;
+        white-space: nowrap;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, var(--green-light), var(--green));
+        color: #fff;
+      }
+
+      .btn-secondary {
+        background: linear-gradient(135deg, #f7b267, #f77f00);
+        color: #fff;
+      }
+
+      .btn:hover {
+        filter: brightness(1.05);
+        transform: translateY(-1px);
+        box-shadow: 0 5px 13px rgba(0, 0, 0, 0.24);
+      }
+
+      .btn:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.28);
+      }
+
+      .footer-note {
+        margin-top: 1.1rem;
+        font-size: 0.8rem;
+        text-align: center;
+        color: #777;
+      }
+
+      .footer-note a {
+        color: var(--green-light);
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .footer-note a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-link active" id="nav-home">Home</a>
+        <a href="BingoCaller.html" class="nav-link" id="nav-bingo"
+          >Holiday Bingo</a
+        >
+        <a href="NameThatTune.html" class="nav-link" id="nav-tunes"
+          >Name That Tune</a
+        >
+      </div>
+    </nav>
+
+    <!-- Main Landing Content -->
+    <main>
+      <section class="landing-card">
+        <header class="landing-header">
+          <h1 class="landing-title">Holiday Game Night Hub 🎄</h1>
+          <p class="landing-subtitle">
+            Pick a game, grab some friends, and let the festive chaos begin.
+          </p>
+        </header>
+
+        <div class="games-grid">
+          <!-- Name That Tune -->
+          <article class="game-card">
+            <div class="game-tag">Music Game</div>
+            <div class="game-title">
+              <span class="game-emoji">🎧</span>
+              Name That Tune
+            </div>
+            <p class="game-desc">
+              Play short clips of holiday songs and see who can guess the title
+              the fastest. Perfect for music lovers and dramatic sing-alongs.
+            </p>
+            <p class="game-meta">
+              Uses the <strong>song clip list</strong> with built-in audio
+              previews.
+            </p>
+            <div class="game-actions">
+              <a href="NameThatTune.html" class="btn btn-primary">
+                Play Name That Tune
+              </a>
+            </div>
+          </article>
+
+          <!-- Holiday Bingo -->
+          <article class="game-card">
+            <div class="game-tag">Party Game</div>
+            <div class="game-title">
+              <span class="game-emoji">🎅</span>
+              Holiday Bingo
+            </div>
+            <p class="game-desc">
+              Draw random festive prompts for players to mark on their bingo
+              cards. First to shout “BINGO!” wins.
+            </p>
+            <p class="game-meta">
+              Pulls from the <strong>Christmas bingo item list</strong> with a
+              live call log.
+            </p>
+            <div class="game-actions">
+              <a href="BingoCaller.html" class="btn btn-secondary">
+                Open Bingo Caller
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <p class="footer-note">
+          Need to tweak clips or add new songs?
+          <br />
+          Use the
+          <a href="clipper.html">Christmas Audio Clipper</a>
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
