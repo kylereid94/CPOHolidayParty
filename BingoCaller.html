@@ -352,7 +352,7 @@
         setStatus("Loading bingo items... 🎄", "ok");
         try {
           // Adjust path if needed (this expects /content/bingo.json)
-          const res = await fetch("/content/bingo.json");
+          const res = await fetch("./content/bingo.json");
           if (!res.ok) {
             throw new Error("HTTP " + res.status);
           }
@@ -465,3 +465,4 @@
     </script>
   </body>
 </html>
+
